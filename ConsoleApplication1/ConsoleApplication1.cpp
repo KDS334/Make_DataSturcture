@@ -3,47 +3,39 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
 
 #include "MyStack.h"
 #include "MyQueue.h"
+#include "MyVector.h"
 
-int solution(string s) {
-    int answer = 0;
+//_msize 함수를 이용하여 힙영역에 할당된 크기를 얻을 수 있다.
 
-    int Cnt = 0;
-    for (; Cnt < (int)s.size(); Cnt++)
-    {
-        if (s[0] != s[Cnt]) break;
-    }
-
-    vector<string> r;
-    for (int i = 0; i < s.size(); ++i)
-    {
-        if (r.empty())
-        {
-            r.push_back(string{ s[i] });
-            continue;
-        }
-
-        if (r[i - 1][0] == s[i])
-            r.push_back(string{ s[i] });
-        else
-        {
-            if (r.size() == Cnt)
-                ++answer;
-
-            r.clear();
-            r.push_back(string{ s[i] });
-        }
-    }
-
-    return answer;
-}
+using namespace std;
 
 int main()
 {
-    solution("banana");
+    ios::sync_with_stdio(false);
+
+    CMyVector<int> vecInt1;
+    CMyVector<int> vecInt2;
+
+    vecInt1.push_back(100);
+    vecInt1.push_back(200);
+    vecInt1.push_back(300);
+    vecInt1.push_back(400);
+
+    vecInt2.push_back(10);
+    vecInt2.push_back(20);
+    vecInt2.push_back(30);
+    vecInt2.push_back(40);
+
+    vecInt1.swap(vecInt2);
+
+    for (int i = 0; i < vecInt1.size(); ++i)
+        cout << vecInt1[i] << '\n';
+
+    for (int i = 0; i < vecInt2.size(); ++i)
+        cout << vecInt2[i] << '\n';
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
