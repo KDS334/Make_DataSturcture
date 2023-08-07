@@ -2,40 +2,40 @@
 //
 
 #include <iostream>
-#include <vector>
 
 #include "MyStack.h"
 #include "MyQueue.h"
 #include "MyVector.h"
-
-//_msize 함수를 이용하여 힙영역에 할당된 크기를 얻을 수 있다.
+#include "Sort.h"
 
 using namespace std;
 
 int main()
 {
-    ios::sync_with_stdio(false);
+    srand((unsigned int)time(nullptr));
 
-    CMyVector<int> vecInt1;
-    CMyVector<int> vecInt2;
+    int Arr[20] = {};
+    
+    for (int i = 0; i < 20; ++i)
+    {
+        Arr[i] = rand() % 20;
+    }
 
-    vecInt1.push_back(100);
-    vecInt1.push_back(200);
-    vecInt1.push_back(300);
-    vecInt1.push_back(400);
+    cout << "Before QuickSort" << endl;
 
-    vecInt2.push_back(10);
-    vecInt2.push_back(20);
-    vecInt2.push_back(30);
-    vecInt2.push_back(40);
+    for (int i = 0; i < 20; ++i)
+        cout << Arr[i] << " ";
 
-    vecInt1.swap(vecInt2);
+    cout << endl << "---------------------------" << endl;
 
-    for (int i = 0; i < vecInt1.size(); ++i)
-        cout << vecInt1[i] << '\n';
+	Quick::Sort(Arr, 0, 19, Quick::RandomPartition);
 
-    for (int i = 0; i < vecInt2.size(); ++i)
-        cout << vecInt2[i] << '\n';
+    cout << "After QuickSort" << endl;
+
+    for (const auto& i : Arr)
+        cout << i << " ";
+
+    return 0;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

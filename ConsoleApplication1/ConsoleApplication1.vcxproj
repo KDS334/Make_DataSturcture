@@ -130,6 +130,7 @@
     <ClCompile Include="ConsoleApplication1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sort.h" />
     <ClInclude Include="SingleLinkedList.h" />
     <ClInclude Include="MyQueue.h" />
     <ClInclude Include="MyStack.h" />
