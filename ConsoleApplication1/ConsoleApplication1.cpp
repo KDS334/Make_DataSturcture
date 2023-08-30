@@ -2,48 +2,40 @@
 //
 
 #include <iostream>
-#include <vector>
-using namespace std;
 
 #include "MyStack.h"
 #include "MyQueue.h"
+#include "MyVector.h"
+#include "Sort.h"
 
-int solution(string s) {
-    int answer = 0;
-
-    int Cnt = 0;
-    for (; Cnt < (int)s.size(); Cnt++)
-    {
-        if (s[0] != s[Cnt]) break;
-    }
-
-    vector<string> r;
-    for (int i = 0; i < s.size(); ++i)
-    {
-        if (r.empty())
-        {
-            r.push_back(string{ s[i] });
-            continue;
-        }
-
-        if (r[i - 1][0] == s[i])
-            r.push_back(string{ s[i] });
-        else
-        {
-            if (r.size() == Cnt)
-                ++answer;
-
-            r.clear();
-            r.push_back(string{ s[i] });
-        }
-    }
-
-    return answer;
-}
+using namespace std;
 
 int main()
 {
-    solution("banana");
+    srand((unsigned int)time(nullptr));
+
+    int Arr[20] = {};
+    
+    for (int i = 0; i < 20; ++i)
+    {
+        Arr[i] = rand() % 20;
+    }
+
+    cout << "Before QuickSort" << endl;
+
+    for (int i = 0; i < 20; ++i)
+        cout << Arr[i] << " ";
+
+    cout << endl << "---------------------------" << endl;
+
+	Quick::Sort(Arr, 0, 19, Quick::RandomPartition);
+
+    cout << "After QuickSort" << endl;
+
+    for (const auto& i : Arr)
+        cout << i << " ";
+
+    return 0;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
