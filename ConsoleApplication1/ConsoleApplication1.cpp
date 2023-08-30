@@ -2,38 +2,24 @@
 //
 
 #include <iostream>
+#include <list>
 
 #include "MyStack.h"
 #include "MyQueue.h"
 #include "MyVector.h"
+#include "MyLinkedList.h"
 #include "Sort.h"
 
 using namespace std;
 
 int main()
 {
-    srand((unsigned int)time(nullptr));
-
-    int Arr[20] = {};
+    MySingleLinkedList<int> list;
     
-    for (int i = 0; i < 20; ++i)
-    {
-        Arr[i] = rand() % 20;
-    }
-
-    cout << "Before QuickSort" << endl;
-
-    for (int i = 0; i < 20; ++i)
-        cout << Arr[i] << " ";
-
-    cout << endl << "---------------------------" << endl;
-
-	Quick::Sort(Arr, 0, 19, Quick::RandomPartition);
-
-    cout << "After QuickSort" << endl;
-
-    for (const auto& i : Arr)
-        cout << i << " ";
+    list.push_back(10);
+    list.push_back(20);
+    list.push_back(30);
+    list.erase(0);
 
     return 0;
 }
